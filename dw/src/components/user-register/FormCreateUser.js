@@ -31,7 +31,12 @@ const userFunction = [
       return {
         userFunction,
         userLevel,
-        value: '',
+        nome: '',
+        sobrenome: '',
+        departamento: '',
+        email: '',
+        id: '',
+        senha: '',
         functionUser: false,
         levelUser: false,
         controls: {
@@ -39,7 +44,7 @@ const userFunction = [
           rtl: false,
           dense: false,
           required: false,
-          customColor: false,
+          customColor: true,
           helperText: false,
           isVisible: false,
           isValidMsg: false

@@ -12,11 +12,12 @@
     :disabled="controls.disabled"
     @functionUser="onSelected($event)"
     default-label="Função do Usuário"
+    secondary
   >
   Função do Usuário
   </ui-select>
   <ui-textfield
-    v-model="value"
+    v-model="departamento"
     :disabled="controls.disabled"
     :dense="controls.dense"
     :required="controls.required"
@@ -28,10 +29,10 @@
   <ui-select
     class="selectBox"
     id="userLevel"
-    v-model="selected"
+    v-model="levelUser"
     :options="userLevel"
     :disabled="controls.disabled"
-    @selected="onSelected($event)"
+    @selected="onSelectedLevel($event)"
     default-label="Nivel de carteira"
   >
   Nivel de carteira
@@ -39,7 +40,7 @@
 </div>
 <div class="item">
   <ui-textfield
-    v-model="value"
+    v-model="nome"
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
@@ -50,7 +51,7 @@
   Nome
   </ui-textfield>
   <ui-textfield
-    v-model="value"
+    v-model="sobrenome"
     :disabled="controls.disabled"
     :dense="controls.dense"
     :required="controls.required"
@@ -60,7 +61,7 @@
   Sobrenome
   </ui-textfield>
   <ui-textfield
-    v-model="value"
+    v-model="email"
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
@@ -73,7 +74,7 @@
 </div>
 <div class="item">
     <ui-textfield
-    v-model="value"
+    v-model="id"
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
@@ -84,7 +85,7 @@
   ID
   </ui-textfield>
     <ui-textfield
-    v-model="value"
+    v-model="senha"
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
@@ -96,7 +97,7 @@
   </ui-textfield>
 </div>
 <div class="item2">
-<ui-button raised>Salvar</ui-button>
+<ui-button class="saveButton" unelevated>Salvar</ui-button>
 </div>
 </div>
 </template>

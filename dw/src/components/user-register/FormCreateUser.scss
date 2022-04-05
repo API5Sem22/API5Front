@@ -10,12 +10,25 @@
   .uiInput {
     margin: 15px;
   }
+  .saveButton {
+    width: 200px;
+  }
   .title {
     margin: 15px;
   }
   ::v-deep .mdc-select__anchor {
     background-color: white !important;
     min-width: 250px;
+  }
+  ::v-deep .mdc-menu-surface--open {
+    min-width: 250px;
+  }
+  ::v-deep .mdc-text-field--focused {
+    color: '#013E89' !important;
+  }
+
+  ::v-deep .mdc-floating-label {
+    color: black;
   }
   
   ::v-deep .mdc-text-field {
@@ -35,5 +48,8 @@
   .item2 {
     margin-top: 10%;
     text-align: right;
+  }
+  .saveButton {
+    margin: 15px;
   }
 }
