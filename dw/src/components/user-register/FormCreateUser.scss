@@ -1,0 +1,16 @@
+.selectBox {
+    margin: 15px;
+}
+::v-deep .mdc-select__anchor {
+  background-color: white !important;
+  min-width: 250px;
+}
+
+::v-deep .mdc-text-field {
+  background-color: white !important;
+  min-width: 250px;
+}
+::v-deep .mdc-ripple-upgraded--background-focused {
+  background-color: white !important;
+  width: auto;
+}

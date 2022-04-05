@@ -1,21 +1,13 @@
 <template>
-    <h2>Cadastrar Usuário</h2>
-    <v-combobox
-    dense
->   </v-combobox>
+  <FormCreateUser />
 </template>
 <script>
+  import FormCreateUser from '@/components/user-register/FormCreateUser.vue'
+
   export default {
-    data () {
-      return {
-        select: ['Vuetify', 'Programming'],
-        items: [
-          'Programming',
-          'Design',
-          'Vue',
-          'Vuetify',
-        ],
-      }
-    },
+  name: 'HomeView',
+  components: {
+    FormCreateUser
   }
+}
 </script>
