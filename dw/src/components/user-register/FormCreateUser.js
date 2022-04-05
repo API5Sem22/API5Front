@@ -32,7 +32,8 @@ const userFunction = [
         userFunction,
         userLevel,
         value: '',
-        selected: false,
+        functionUser: false,
+        levelUser: false,
         controls: {
           disabled: false,
           rtl: false,
@@ -47,7 +48,10 @@ const userFunction = [
     },
     methods: {
       onSelected(selected) {
-        this.selected = selected.value;
+        this.functionUser = selected.value;
+      },
+      onSelectedLevel(selected) {
+        this.levelUser = selected.value;
       }
     }
   };
