@@ -43,7 +43,6 @@ const userFunction = [
           disabled: false,
           rtl: false,
           dense: false,
-          required: false,
           customColor: true,
           helperText: false,
           isVisible: false,
@@ -57,6 +56,32 @@ const userFunction = [
       },
       onSelectedLevel(selected) {
         this.levelUser = selected.value;
+      },
+      onSave() {
+        //Dados do usuário cadastrado
+        const userData = {
+          userFunction: this.userFunction,
+          departamento: this.departamento,
+          userLevel: this.userLevel,
+          nome: this.nome,
+          sobrenome: this.sobrenome,
+          email: this.email,
+          id: this.id,
+          senha: this.senha
+        }
+        if (userData)
+        /* Chamada da api
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData)
+        };
+        fetch("API DO GRUPO", requestOptions)
+          .then(response => response.json())
+          .then(data => (this.postId = data.id));
+          Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
+          continuar em aula https://next-material.balmjs.com/#/data-input/validator*/
+        console.log(userData);
       }
     }
   };

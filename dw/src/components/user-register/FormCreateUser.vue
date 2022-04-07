@@ -17,10 +17,10 @@
   Função do Usuário
   </ui-select>
   <ui-textfield
+    required
     v-model="departamento"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
@@ -44,7 +44,6 @@
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
@@ -54,7 +53,6 @@
     v-model="sobrenome"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
@@ -65,7 +63,6 @@
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
@@ -78,18 +75,18 @@
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
   ID
   </ui-textfield>
     <ui-textfield
+    input-type="password"
+    required
     v-model="senha"
     class="uiInput"
     :disabled="controls.disabled"
     :dense="controls.dense"
-    :required="controls.required"
     :class="{'demo-text-field-custom-colors': controls.customColor}"
     helper-text-id="my-text-field-helper-text"
   >
@@ -97,7 +94,7 @@
   </ui-textfield>
 </div>
 <div class="item2">
-<ui-button class="saveButton" unelevated>Salvar</ui-button>
+<ui-button class="saveButton" @click="onSave()" raised>Salvar</ui-button>
 </div>
 </div>
 </template>
