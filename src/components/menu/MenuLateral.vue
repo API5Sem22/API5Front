@@ -1,25 +1,28 @@
 <template>
   <div class="menu">
   <div>
-    <img src="@/assets/logo.png" class="img-avatar" alt="">
+    <img src="@/assets/pp.jpg" class="img-avatar" alt="">
   </div>
   <div>
-    <b>Usuário logado</b>
+    <b>Mike Barcelos</b>
   </div>
-  <div class="menu-option">
-    Área de usuário
+  <div class="menu-options">
     <div>
-      Cadastrar Usuário
+      <b @click="openUserMenu()" class="option"><span class="material-icons-outlined option">
+        person
+      </span>  Área do usuário</b>
+      <div v-if="openUser" class="options" @click="navigateTo('userRegister')">
+        <b>Cadastrar Usuário</b>
+      </div>
+      <div v-if="openUser" class="options" @click="navigateTo('userConsult')">
+        <b>Consultar Usuário</b>
+      </div>
     </div>
-    <div>
-      Editar Usuário
+    <div class="menu-option" @click="navigateTo('clientConsult')">
+      <b class="option"><span class="material-icons-outlined option">
+        headset_mic
+      </span>  Área de Clientes</b>
     </div>
-  </div>
-    <div>
-    teste dois
-  </div>
-    <div>
-    teste dois
   </div>
   </div>
 </template>

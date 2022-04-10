@@ -18,7 +18,7 @@
       Função do Usuário
       </ui-select>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       v-model="formData.departament"
@@ -27,7 +27,7 @@
       Departamento
       </ui-textfield>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-select
       class="selectBox"
       id="userLevel"
@@ -41,7 +41,7 @@
     </ui-form-field>
   </div>
   <div class="item">
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       v-model="formData.name"
@@ -51,7 +51,7 @@
       Nome
       </ui-textfield>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       v-model="formData.lasName"
@@ -60,7 +60,7 @@
       Sobrenome
       </ui-textfield>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       v-model="formData.email"
@@ -72,7 +72,7 @@
     </ui-form-field>
   </div>
   <div class="item">
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       v-model="formData.creatorID"
@@ -82,7 +82,7 @@
       ID
       </ui-textfield>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       input-type="password"
@@ -92,7 +92,7 @@
       Senha 
       </ui-textfield>
     </ui-form-field>
-    <ui-form-field>
+    <ui-form-field class="form-item">
       <ui-textfield
       required
       input-type="password"
