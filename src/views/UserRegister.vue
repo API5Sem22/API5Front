@@ -5,7 +5,7 @@
   import FormCreateUser from '@/components/user-register/FormCreateUser.vue'
 
   export default {
-  name: 'HomeView',
+  name: 'UserRegisterView',
   components: {
     FormCreateUser
   }

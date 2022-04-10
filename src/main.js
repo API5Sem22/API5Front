@@ -11,5 +11,5 @@ createApp(App).use(store).use(router).use(BalmUIPlus).use(BalmUI, {
   $theme: {
     primary: '#013E89',
     secondary: '#013E89',
-  }
+  },
 }).mount('#app')

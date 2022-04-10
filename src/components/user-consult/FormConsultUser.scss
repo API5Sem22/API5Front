@@ -1,20 +1,12 @@
-.registerUser {
+.userConsult{
   display: flex;
   flex-flow: column;
   max-width: 900px;
 	margin: 0 auto;
 	display: flex;
-  .selectBox {
-    margin: 15px;
-  }
-  .uiInput {
-    margin: 15px;
-  }
-  .saveButton {
-    width: 200px;
-  }
   .title {
     margin: 15px;
+    margin-bottom: 8%;
   }
   ::v-deep .mdc-select__anchor {
     background-color: white !important;
@@ -30,7 +22,9 @@
   ::v-deep .mdc-floating-label {
     color: black;
   }
-  
+  .error {
+    margin-top: 15px !important;
+  }
   ::v-deep .mdc-text-field {
     background-color: white !important;
     min-width: 250px;
@@ -41,11 +35,31 @@
     margin: 5px;
     text-align: left;
   }
-  .item2 {
-    margin-top: 10%;
-    text-align: right;
+  .dotted {
+    margin-top: 5%;
+    color: rgb(170, 165, 165);
+    border-top: 2px dotted;
   }
-  .saveButton {
-    margin: 15px;
+  .uiInput {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .form-item {
+    margin-top: 20px;
+  }
+  .buttonSave {
+    margin-top: 7%;
+    text-align: right;
+    button {
+      width: 200px;
+    }
+  }
+  .buttonDelete {
+    margin-top: 2%;
+    text-align: right;
+    button {
+      width: 200px;
+      background-color: darkred;
+    }
   }
 }
