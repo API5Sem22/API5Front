@@ -1,7 +1,7 @@
 import { useValidator } from 'balm-ui';
 
 const validations = {
-    userID: {
+    email: {
       label: 'ID',
       validator: 'notNull',
       notNull: {
@@ -23,31 +23,19 @@ const validations = {
       label: 'Nome',
       validator: 'required',
     },
-    lasName: {
-      label: 'Sobrenome',
-      validator: 'required',
-    },
-    email: {
-      label: 'Email',
-      validator: 'required',
-    },
-    userLevel: {
-      label: 'Nível de Carteira',
-      validator: 'required',
-    }
 }
 const userLevelOptions = [
   {
     label: 'Nível 1',
-    value: '1'
+    value: 'C1'
   },
   {
-    label: 'Nível 2',
-    value: '2',
+    label: 'Carte 2',
+    value: 'C2',
   },
   {
     label: 'Nível 3',
-    value: '3'
+    value: 'C3'
   },
 ];
 export default {
@@ -56,17 +44,14 @@ export default {
       balmUI: useValidator(),
       validations,
       userLevelOptions,
-      userID: '',
+      userEmail: '',
       formData: {
         userID: '-',
-        userFunction: '',
-        departament: '',
+        userFunction: '-',
+        departament: '-',
         userLevel: '',
-        name: '',
-        lasName: '',
-        email: '',
-        password: '',
-        rePassword: '',
+        name: '-',
+        email: '-',
       },
       messages: [],
     };
@@ -74,37 +59,83 @@ export default {
   methods: {
     formReset() {
       this.formData = {
-        userID: '-',
-        userFunction: '',
-        departament: '',
+        userFunction: '-',
+        departament: '-',
         userLevel: '',
-        name: '',
-        lasName: '',
-        email: '',
-        password: '',
-        rePassword: '',
+        name: '-',
+        email: '-',
       }
     },
     searchUser() {
-      console.log(this.userID);
+      this.messages = [];
+      // GET request using fetch with set headers
+      const headers = { "Content-Type": "application/json" };
+      // GET request using fetch with error handling
+      fetch(`https:datawarrior.herokuapp.com/usuarios/${this.userEmail}`, { headers })
+        .then(async response => {
+          const data = await response.json();
+          console.log(data);
+          if (data.cargo.descricao == "Vendedor") {
+            this.formData = {
+              email: data.email,
+              userFunction: data.cargo.descricao,
+              departament: data.departamento,
+              name: data.nome,
+              userLevel: data.carteira.descricao
+            };
+          }
+          else {
+            this.formData = {
+              email: data.email,
+              userFunction: data.cargo.descricao,
+              departament: 'Interno',
+              name: data.nome,
+            };
+          }
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+  
+        })
+        .catch(error => {
+          this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
+          console.log(error);
+        });
     },
     onSave() {
       const result = this.balmUI.validate(this.formData);
       const { valid, messages} = result;
       this.messages = messages;
       if (valid) {
-        /* Chamada da api
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData)
-      };
-      fetch("API DO GRUPO", requestOptions)
-        .then(response => response.json())
-        .then(data => (this.postId = data.id));
-        Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
+        // POST request using fetch with error handling
+        const requestOptions = {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({cargo:{descricao: this.formData.userFunction}, carteira: null, departamento: this.formData.departament, email: this.formData.email, nome: this.formData.name, senha: 'admin'}),
+        };
+        fetch(`https:datawarrior.herokuapp.com/usuarios`, requestOptions)
+        .then(async response => {
+        const data = await response.json();
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        this.postId = data.id;
+        })
+        .catch(error => {
+        this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
+        console.log(requestOptions.body);
+        console.error(error);
+        });
+        /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
         continuar em aula https://next-material.balmjs.com/#/data-input/validator*/
-      console.log(this.formData);
       this.formReset();
       }
     },
@@ -113,18 +144,29 @@ export default {
       const { valid, messages} = result;
       this.messages = messages;
       if (valid) {
-        /* Chamada da api
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData)
-      };
-      fetch("API DO GRUPO", requestOptions)
-        .then(response => response.json())
-        .then(data => (this.postId = data.id));
-        Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
+        // POST request using fetch with error handling
+        const requestOptions = {
+          method: 'DELETE',
+        };
+        fetch(`https:datawarrior.herokuapp.com/usuarios?id=${this.userEmail}`, requestOptions)
+        .then(async response => {
+        const data = await response.json();
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        this.postId = data.id;
+        })
+        .catch(error => {
+        this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
+        console.error(error);
+        });
+        /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
         continuar em aula https://next-material.balmjs.com/#/data-input/validator*/
-      console.log(this.formData);
       this.formReset();
       }
     } 

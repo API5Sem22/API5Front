@@ -4,7 +4,7 @@
     <div class="item">
       <h2 class="title">Consultar Clientes</h2>
       <ui-textfield v-model="clientID">
-        Buscar ID do Cliente
+        Buscar CNPJ do Cliente
         <template #after>
           <ui-textfield-icon @click="searchUser()">search</ui-textfield-icon>
         </template>

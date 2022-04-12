@@ -7,7 +7,6 @@
   <div class="item">
     <ui-form-field class="form-item">
       <ui-select
-      required
       class="selectBox"
       id="userFunction"
       v-model="formData.userFunction"
@@ -20,7 +19,6 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       v-model="formData.departament"
       helper-text-id="my-text-field-helper-text"
       >
@@ -43,7 +41,6 @@
   <div class="item">
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       v-model="formData.name"
       class="uiInput"
       helper-text-id="my-text-field-helper-text"
@@ -53,7 +50,6 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       v-model="formData.lasName"
       helper-text-id="my-text-field-helper-text"
       >
@@ -62,7 +58,6 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       v-model="formData.email"
       class="uiInput"
       helper-text-id="my-text-field-helper-text"
@@ -74,7 +69,6 @@
   <div class="item">
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       v-model="formData.creatorID"
       class="uiInput"
       helper-text-id="my-text-field-helper-text"
@@ -84,7 +78,6 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       input-type="password"
       v-model="formData.password"
       helper-text-id="my-text-field-helper-text"
@@ -94,7 +87,6 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       input-type="password"
       v-model="formData.rePassword"
       class="uiInput"
