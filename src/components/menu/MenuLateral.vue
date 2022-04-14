@@ -1,10 +1,7 @@
 <template>
   <div class="menu">
   <div>
-    <img src="@/assets/pp.jpg" class="img-avatar" alt="">
-  </div>
-  <div>
-    <b>Mike Barcelos</b>
+    <img src="@/assets/logo.png" class="img-avatar" alt="">
   </div>
   <div class="menu-options">
     <div>

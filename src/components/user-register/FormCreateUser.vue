@@ -7,10 +7,9 @@
   <div class="item">
     <ui-form-field class="form-item">
       <ui-select
-      required
       class="selectBox"
       id="userFunction"
-      v-model="formData.userFunction"
+      v-model="formData.cargo.idCargo"
       :options="userFunctionOptions"
       default-label="Função do Usuário"
       secondary
@@ -20,49 +19,26 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
-      v-model="formData.departament"
+      v-model="formData.departamento"
       helper-text-id="my-text-field-helper-text"
       >
       Departamento
       </ui-textfield>
     </ui-form-field>
     <ui-form-field class="form-item">
-      <ui-select
-      class="selectBox"
-      id="userLevel"
-      v-if="formData.userFunction === 'vendedor'"
-      v-model="formData.userLevel"
-      :options="userLevelOptions"
-      default-label="Nivel de carteira"
-      >
-      Nivel de carteira
-      </ui-select>
-    </ui-form-field>
-  </div>
-  <div class="item">
-    <ui-form-field class="form-item">
       <ui-textfield
-      required
-      v-model="formData.name"
+      v-model="formData.nome"
       class="uiInput"
       helper-text-id="my-text-field-helper-text"
       >
       Nome
       </ui-textfield>
     </ui-form-field>
+  </div>
+  <div class="item">
+
     <ui-form-field class="form-item">
       <ui-textfield
-      required
-      v-model="formData.lasName"
-      helper-text-id="my-text-field-helper-text"
-      >
-      Sobrenome
-      </ui-textfield>
-    </ui-form-field>
-    <ui-form-field class="form-item">
-      <ui-textfield
-      required
       v-model="formData.email"
       class="uiInput"
       helper-text-id="my-text-field-helper-text"
@@ -70,23 +46,10 @@
       Email
       </ui-textfield>
     </ui-form-field>
-  </div>
-  <div class="item">
     <ui-form-field class="form-item">
       <ui-textfield
-      required
-      v-model="formData.creatorID"
-      class="uiInput"
-      helper-text-id="my-text-field-helper-text"
-      >
-      ID
-      </ui-textfield>
-    </ui-form-field>
-    <ui-form-field class="form-item">
-      <ui-textfield
-      required
       input-type="password"
-      v-model="formData.password"
+      v-model="formData.senha"
       helper-text-id="my-text-field-helper-text"
       >
       Senha 
@@ -94,14 +57,27 @@
     </ui-form-field>
     <ui-form-field class="form-item">
       <ui-textfield
-      required
       input-type="password"
-      v-model="formData.rePassword"
       class="uiInput"
+      v-model="formData.rePassword"
       helper-text-id="my-text-field-helper-text"
       >
       Repetir Senha 
       </ui-textfield>
+    </ui-form-field>
+  </div>
+  <div class="item">
+    <ui-form-field class="form-item">
+      <ui-select
+      class="selectBox"
+      id="userLevel"
+      v-if="formData.cargo.idCargo === 1"
+      v-model="formData.carteira.idCarteira"
+      :options="userLevelOptions"
+      default-label="Nivel de carteira"
+      >
+      Nivel de carteira
+      </ui-select>
     </ui-form-field>
   </div>
   <div class="item error">
@@ -109,6 +85,7 @@
     <ul>
       <li v-for="(message, index) in messages" :key="index">{{ message }}</li>
     </ul>
+    <ui-alert state="success" v-if="sucessMessage !== ''">{{sucessMessage}}</ui-alert>
   </ui-alert>
   </div>
   <div class="item2">

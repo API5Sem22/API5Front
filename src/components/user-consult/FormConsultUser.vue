@@ -2,8 +2,8 @@
   <div class="userConsult">
     <div class="item">
       <h2 class="title">Consultar Usuários</h2>
-      <ui-textfield v-model="userID" >
-        Buscar ID do Usuário
+      <ui-textfield v-model="userEmail" >
+        Buscar Email do Usuário
         <template #after>
           <ui-textfield-icon @click="searchUser()">search</ui-textfield-icon>
         </template>
@@ -14,37 +14,30 @@
       <div class="item">
         <ui-form-field class="form-item">
         <ui-textfield
-        v-model="formData.userID" 
+        v-model="formData.email"
         disabled
         >
-        ID
+        Email
         </ui-textfield>
         </ui-form-field>
         <ui-form-field class="form-item">
-        <ui-textfield class="uiInput" v-model="formData.userFunction" >Função</ui-textfield>
+        <ui-textfield class="uiInput" v-model="formData.userFunction" disabled >Função</ui-textfield>
         </ui-form-field>
         <ui-form-field class="form-item">
-        <ui-textfield v-model="formData.departament" >Departamento</ui-textfield>
-        </ui-form-field>
-      </div>
-      <div class="item">
-        <ui-form-field class="form-item">
-        <ui-textfield v-model="formData.name" >Nome</ui-textfield>
-        </ui-form-field>
-        <ui-form-field class="form-item">
-        <ui-textfield class="uiInput" v-model="formData.lasName" >Sobrenome</ui-textfield>
-        </ui-form-field>
-        <ui-form-field class="form-item">
-        <ui-textfield v-model="formData.email" >Email</ui-textfield>
+        <ui-textfield v-model="formData.departament" disabled>Departamento</ui-textfield>
         </ui-form-field>
       </div>
       <div class="item">
         <ui-form-field class="form-item">
-          <ui-select class="selectBox" id="userFunction"
+        <ui-textfield v-model="formData.name">Nome</ui-textfield>
+        </ui-form-field>
+        <ui-form-field class="form-item">
+          <ui-select class="selectBox uiInput" id="userFunction"
           v-model="formData.userLevel"
           :options="userLevelOptions"
+          v-if="formData.userFunction === 'Admin'"
           default-label="Nivel de carteira">
-            Nível de Carteira
+          Nível de Carteira
           </ui-select>
         </ui-form-field>
       </div>
@@ -54,15 +47,17 @@
             <li v-for="(message, index) in messages" :key="index">{{ message }}</li>
           </ul>
         </ui-alert>
+        <ui-alert state="info" v-if="infoMessage !== ''">{{infoMessage}}</ui-alert>
+        <ui-alert state="success" v-if="sucessMessage !== ''">{{sucessMessage}}</ui-alert>
       </div>
       <div class="buttonSave">
         <ui-form-field>
-          <ui-button class="saveButton" @click="onSave()" raised>Salvar</ui-button>
+          <ui-button class="saveButton" @click="confirmDialog('update')" raised>Salvar</ui-button>
         </ui-form-field>
       </div>
       <div class="buttonDelete">
         <ui-form-field>
-          <ui-button class="saveButton" @click="onDelete()" raised>Excluir</ui-button>
+          <ui-button class="saveButton" @click="confirmDialog('delete')" raised>Excluir</ui-button>
         </ui-form-field>
       </div>
     </ui-form>

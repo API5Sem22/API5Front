@@ -4,7 +4,7 @@
     <div class="item">
       <h2 class="title">Consultar Clientes</h2>
       <ui-textfield v-model="clientID">
-        Buscar ID do Cliente
+        Buscar CNPJ do Cliente
         <template #after>
           <ui-textfield-icon @click="searchUser()">search</ui-textfield-icon>
         </template>
@@ -90,10 +90,12 @@
             <li v-for="(message, index) in messages" :key="index">{{ message }}</li>
           </ul>
         </ui-alert>
+        <ui-alert state="info" v-if="infoMessage !== ''">{{infoMessage}}</ui-alert>
+        <ui-alert state="success" v-if="sucessMessage !== ''">{{sucessMessage}}</ui-alert>
       </div>
       <div class="buttonSave">
         <ui-form-field>
-          <ui-button class="saveButton" @click="onSave()" raised>Salvar</ui-button>
+          <ui-button class="saveButton" @click="confirmDialog()" raised>Salvar</ui-button>
         </ui-form-field>
       </div>
     </ui-form>
