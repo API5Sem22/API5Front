@@ -1,0 +1,59 @@
+.registerUser {
+  display: flex;
+  flex-flow: column;
+  max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+  .selectBox {
+    margin: 15px;
+  }
+  .uiInput {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .saveButton {
+    width: 200px;
+  }
+  .title {
+    margin: 15px;
+    margin-bottom: 8%;
+  }
+  .form-item {
+    margin-top: 20px;
+  }
+  .error {
+    margin-top: 15px !important;
+  }
+  ::v-deep .mdc-select__anchor {
+    background-color: white !important;
+    min-width: 250px;
+  }
+  ::v-deep .mdc-menu-surface--open {
+    min-width: 250px;
+  }
+  ::v-deep .mdc-text-field--focused {
+    color: '#013E89' !important;
+  }
+
+  ::v-deep .mdc-floating-label {
+    color: black;
+  }
+  
+  ::v-deep .mdc-text-field {
+    background-color: white !important;
+    min-width: 250px;
+  }
+  .item {
+    /* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
+    flex: 1;
+    margin: 5px;
+    text-align: left;
+  }
+  .item2 {
+    margin-top: 7%;
+    text-align: right;
+  }
+  .saveButton {
+    margin: 15px;
+  }
+}

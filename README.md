@@ -1,2 +1,24 @@
-# API5Front
-Front-end do Projeto Integrador do 5° Semestre do curso de Banco de Dados da Fatec São José dos Campos.
+# dw
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
