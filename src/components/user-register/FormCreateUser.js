@@ -95,16 +95,19 @@ const userFunctionOptions = [
         const { valid, messages} = result;
         this.messages = messages;
         if (valid) {
+          if (this.formData.cargo.idCargo !== 1) {
+            this.formData.carteira = null;
+          }
           // POST request using fetch with error handling
           const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(this.formData)
           };
-          fetch(`https:datawarrior.herokuapp.com/usuarios`, requestOptions)
+          fetch(`https:datawarriors-back.herokuapp.com/usuarios`, requestOptions)
           .then(async response => {
           const data = await response;
-  
+          console.log(data);
           // check for error response
           if (!response.ok) {
             // get error message from body or default to response status

@@ -1,4 +1,4 @@
-const baseApi = 'https:datawarrior.herokuapp.com/';
+const baseApi = 'https:datawarriors-back.herokuapp.com/';
 export default {
   getSingleUser(value) {
     this.messages = [];

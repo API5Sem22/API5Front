@@ -11,19 +11,23 @@ const validations = {
         message: 'Nenhum cliente selecionado!' 
       }
     },
+    clientLevel: {
+      label: 'Nivel de carteira',
+      validator: 'required',
+    },
 }
 const clientLevelOptions = [
   {
     label: 'Nível 1',
-    value: 1
+    value: 'C1'
   },
   {
     label: 'Nível 2',
-    value: 2,
+    value: 'C2',
   },
   {
     label: 'Nível 3',
-    value: 3
+    value: 'C3'
   },
 ];
 export default {
@@ -65,12 +69,23 @@ export default {
       this.messages = [];
       this.sucessMessage = '',
       this.infoMessage = 'Processando sua requisição'
-      // GET request using fetch with set headers
-      const headers = { "Content-Type": "application/json" };
+      const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
-      fetch(`https:datawarrior.herokuapp.com/usuarios/${this.formData.cnpj}`, { headers })
+      fetch(`https:datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
         .then(async response => {
           const data = await response.json();
+          this.formData = {
+            cnpj: data.cnpj.cnpj,
+            cnae: data.idCnae.codigo,
+            desc: data.idCnae.descricao,
+            name: data.cnpj.nome,
+            city: data.idCidade.nome,
+            state: data.idCidade.estado,
+            clientLevel: data.nivel,
+            vendorID: data.vendedor.email,
+
+          }
+          console.log(data);
           this.infoMessage = '';
           // check for error response
           if (!response.ok) {
@@ -93,9 +108,9 @@ export default {
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email: this.formData.cnpj, carteira: {idCarteira: this.formData.clientLevel}, vendorID: this.formData.vendorID}),
+        body: JSON.stringify({cnpj: {cpnj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
       };
-      fetch(`https:datawarrior.herokuapp.com/usuarios/nivel-carteira`, requestOptions)
+      fetch(`https://datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
       .then(async response => {
       const data = await response;
       // check for error response
@@ -111,6 +126,7 @@ export default {
       })
       .catch(error => {
       this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
+      this.infoMessage = '';
       console.log(requestOptions.body);
       console.error(error);
       });
@@ -133,6 +149,9 @@ export default {
           }
         });
       }
+    },
+    deleteWallet() {
+      this.formData.vendorID = '';
     }
   }
 };
