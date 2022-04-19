@@ -85,7 +85,6 @@ export default {
             vendorID: data.vendedor.email,
 
           }
-          console.log(data);
           this.infoMessage = '';
           // check for error response
           if (!response.ok) {
@@ -108,9 +107,9 @@ export default {
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({cnpj: {cpnj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
+        body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
       };
-      fetch(`https://datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
+      fetch(`https:datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
       .then(async response => {
       const data = await response;
       // check for error response
@@ -127,7 +126,6 @@ export default {
       .catch(error => {
       this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
       this.infoMessage = '';
-      console.log(requestOptions.body);
       console.error(error);
       });
       /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
