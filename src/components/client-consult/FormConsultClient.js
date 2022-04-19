@@ -85,7 +85,6 @@ export default {
             vendorID: data.vendedor.email,
 
           }
-          console.log(data);
           this.infoMessage = '';
           // check for error response
           if (!response.ok) {

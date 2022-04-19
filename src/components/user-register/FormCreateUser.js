@@ -107,7 +107,6 @@ const userFunctionOptions = [
           fetch(`https:datawarriors-back.herokuapp.com/usuarios`, requestOptions)
           .then(async response => {
           const data = await response;
-          console.log(data);
           // check for error response
           if (!response.ok) {
             // get error message from body or default to response status
