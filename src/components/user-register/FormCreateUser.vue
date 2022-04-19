@@ -85,8 +85,8 @@
     <ul>
       <li v-for="(message, index) in messages" :key="index">{{ message }}</li>
     </ul>
-    <ui-alert state="success" v-if="sucessMessage !== ''">{{sucessMessage}}</ui-alert>
   </ui-alert>
+  <ui-alert state="success" v-if="sucessMessage !== ''">{{sucessMessage}}</ui-alert>
   </div>
   <div class="item2">
     <ui-form-field>
