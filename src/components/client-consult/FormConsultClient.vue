@@ -79,7 +79,7 @@
           <ui-textfield class="uiInput" v-model="formData.vendorID">
             Vendedor Atribuído
             <template #after>
-              <ui-textfield-icon @click="searchUser()">delete</ui-textfield-icon>
+              <ui-textfield-icon @click="deleteWallet()">delete</ui-textfield-icon>
             </template>
           </ui-textfield>
         </ui-form-field>

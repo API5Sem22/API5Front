@@ -29,13 +29,13 @@
       </div>
       <div class="item">
         <ui-form-field class="form-item">
-        <ui-textfield v-model="formData.name">Nome</ui-textfield>
+        <ui-textfield v-model="formData.name" disabled>Nome</ui-textfield>
         </ui-form-field>
         <ui-form-field class="form-item">
           <ui-select class="selectBox uiInput" id="userFunction"
-          v-model="formData.userLevel"
+          v-model="formData.userLevel.idCarteira"
           :options="userLevelOptions"
-          v-if="formData.userFunction === 'Admin'"
+          v-if="formData.userFunction === 'Vendedor'"
           default-label="Nivel de carteira">
           Nível de Carteira
           </ui-select>

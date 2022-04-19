@@ -30,7 +30,7 @@ const userLevelOptions = [
     value: 1
   },
   {
-    label: 'Carte 2',
+    label: 'Nível 2',
     value: 2,
   },
   {
@@ -49,7 +49,7 @@ export default {
         userID: '-',
         userFunction: '-',
         departament: '-',
-        userLevel: '',
+        userLevel: {idCarteira: null},
         name: '-',
         email: '-',
       },
@@ -63,7 +63,7 @@ export default {
       this.formData = {
         userFunction: '-',
         departament: '-',
-        userLevel: '',
+        userLevel: {idCarteira: null},
         name: '-',
         email: '-',
       }
@@ -75,7 +75,7 @@ export default {
       // GET request using fetch with set headers
       const headers = { "Content-Type": "application/json" };
       // GET request using fetch with error handling
-      fetch(`https:datawarrior.herokuapp.com/usuarios/${this.userEmail}`, { headers })
+      fetch(`https:datawarriors-back.herokuapp.com/usuarios/${this.userEmail}`, { headers })
         .then(async response => {
           const data = await response.json();
           this.infoMessage = '';
@@ -85,7 +85,7 @@ export default {
               userFunction: data.cargo.descricao,
               departament: data.departamento,
               name: data.nome,
-              userLevel: data.carteira.descricao
+              userLevel: {idCarteira: data.carteira.idCarteira}
             };
           }
           else {
@@ -117,9 +117,9 @@ export default {
         const requestOptions = {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({email: this.formData.email, carteira: {idCarteira: this.formData.userLevel}}),
+          body: JSON.stringify({email: this.formData.email, carteira: {idCarteira: this.formData.userLevel.idCarteira}}),
         };
-        fetch(`https:datawarrior.herokuapp.com/usuarios/nivel-carteira`, requestOptions)
+        fetch(`https:datawarriors-back.herokuapp.com/usuarios/nivel-carteira`, requestOptions)
         .then(async response => {
         const data = await response;
         // check for error response
@@ -149,10 +149,9 @@ export default {
         const requestOptions = {
           method: 'DELETE',
         };
-        fetch(`https:datawarrior.herokuapp.com/usuarios?email=${this.formData.email}`, requestOptions)
+        fetch(`https:datawarriors-back.herokuapp.com/usuarios/delete/${this.formData.email}`, requestOptions)
         .then(async response => {
         const data = await response;
-
         // check for error response
         if (!response.ok) {
           // get error message from body or default to response status
