@@ -71,7 +71,7 @@ export default {
       this.infoMessage = 'Processando sua requisição'
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
-      fetch(`https:datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
+      fetch(`https://datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
         .then(async response => {
           const data = await response.json();
           this.formData = {
@@ -103,13 +103,16 @@ export default {
     onSave() {
       this.sucessMessage = '';
       this.infoMessage = 'Processando sua requisição';
+      if(this.formData.vendorID = '') {
+        this.formData.vendorID = null;
+      }
       // POST request using fetch with error handling
       const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
+        body: JSON.stringify({cnpj: {cpnj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
       };
-      fetch(`https:datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
+      fetch(`https://datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
       .then(async response => {
       const data = await response;
       // check for error response
@@ -149,7 +152,7 @@ export default {
       }
     },
     deleteWallet() {
-      this.formData.vendorID = '';
+      this.formData.vendorID = null;
     }
   }
 };

@@ -75,7 +75,7 @@ export default {
       // GET request using fetch with set headers
       const headers = { "Content-Type": "application/json" };
       // GET request using fetch with error handling
-      fetch(`https:datawarriors-back.herokuapp.com/usuarios/${this.userEmail}`, { headers })
+      fetch(`https://datawarriors-back.herokuapp.com/usuarios/${this.userEmail}`, { headers })
         .then(async response => {
           const data = await response.json();
           this.infoMessage = '';
@@ -119,7 +119,7 @@ export default {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({email: this.formData.email, carteira: {idCarteira: this.formData.userLevel.idCarteira}}),
         };
-        fetch(`https:datawarriors-back.herokuapp.com/usuarios/nivel-carteira`, requestOptions)
+        fetch(`https://datawarriors-back.herokuapp.com/usuarios/nivel-carteira`, requestOptions)
         .then(async response => {
         const data = await response;
         // check for error response
@@ -135,7 +135,6 @@ export default {
         })
         .catch(error => {
         this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
-        console.log(requestOptions.body);
         console.error(error);
         });
         /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
@@ -149,7 +148,7 @@ export default {
         const requestOptions = {
           method: 'DELETE',
         };
-        fetch(`https:datawarriors-back.herokuapp.com/usuarios/delete/${this.formData.email}`, requestOptions)
+        fetch(`https://datawarriors-back.herokuapp.com/usuarios/delete/${this.formData.email}`, requestOptions)
         .then(async response => {
         const data = await response;
         // check for error response
