@@ -103,7 +103,7 @@ export default {
     onSave() {
       this.sucessMessage = '';
       this.infoMessage = 'Processando sua requisição';
-      if(this.formData.vendorID = '') {
+      if(this.formData.vendorID === '') {
         this.formData.vendorID = null;
       }
       // POST request using fetch with error handling
