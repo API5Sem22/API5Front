@@ -82,8 +82,12 @@ export default {
             city: data.idCidade.nome,
             state: data.idCidade.estado,
             clientLevel: data.nivel,
-            vendorID: data.vendedor.email,
-
+          }
+          if (data.vendedor == null) {
+            this.formData.vendorID = '';
+          }
+          else {
+            this.formData.vendorID = data.vendedor.email;
           }
           this.infoMessage = '';
           // check for error response
@@ -102,13 +106,23 @@ export default {
     },
     onSave() {
       this.sucessMessage = '';
+      let requestOptions = {};
       this.infoMessage = 'Processando sua requisição';
-      // POST request using fetch with error handling
-      const requestOptions = {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({cnpj: {cpnj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
-      };
+      if(this.formData.vendorID === '' || this.formData.vendorID === null) {
+        requestOptions = {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: this.formData.vendorID, nivel: this.formData.clientLevel}),
+        };
+      }
+      else {
+        // POST request using fetch with error handling
+        requestOptions = {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
+        };
+      }
       fetch(`https://datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
       .then(async response => {
       const data = await response;
@@ -119,6 +133,7 @@ export default {
         return Promise.reject(error);
       }
       else {
+        this.infoMessage = '';
         this.sucessMessage = 'Alteração feita com sucesso!';
       }
 
@@ -126,7 +141,6 @@ export default {
       .catch(error => {
       this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
       this.infoMessage = '';
-      console.log(requestOptions.body);
       console.error(error);
       });
       /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
@@ -150,7 +164,7 @@ export default {
       }
     },
     deleteWallet() {
-      this.formData.vendorID = '';
+      this.formData.vendorID = null;
     }
   }
 };
