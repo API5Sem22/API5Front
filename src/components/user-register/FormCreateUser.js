@@ -104,7 +104,7 @@ const userFunctionOptions = [
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(this.formData)
           };
-          fetch(`https:datawarriors-back.herokuapp.com/usuarios`, requestOptions)
+          fetch(`https://datawarriors-back.herokuapp.com/usuarios`, requestOptions)
           .then(async response => {
           const data = await response;
           // check for error response
