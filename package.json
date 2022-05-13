@@ -9,11 +9,13 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@syncfusion/ej2-vue-grids": "^20.1.55",
     "balm-ui": "^10.3.1",
     "core-js": "^3.8.3",
     "express": "^4.17.3",
     "serve-static": "^1.15.0",
-    "vue": "^3.2.13",
+    "vue": "^3.2.33",
+    "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
