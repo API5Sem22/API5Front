@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  circlecideploy:
+    build: .
+    container_name: dw
+    ports:
+      - "8080:8080"
