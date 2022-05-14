@@ -42,77 +42,8 @@ export default {
     },
   data() {
     return {
-      dataGrid:  [
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10248,
-          "CustomerID":"VINET",
-          "ShipCountry":"France"
-        },
-        {
-          "OrderID":10249,
-          "CustomerID":"TOMSP",
-          "ShipCountry":"Germany"
-      }],
+      dataGrid: [],
+      gridData: null,
       pageSettings: { pageSize: 8 },
       toolbarOptions: ['ExcelExport'],
       balmUI: useValidator(),
@@ -166,42 +97,26 @@ export default {
     },
     searchUser() {
       this.messages = [];
+      this.dataGrid = [];
       this.sucessMessage = '',
       this.infoMessage = 'Processando sua requisição'
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
-      fetch(`https:datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
+      fetch(`http://localhost:8082/empresas/carteira/gabriel@gmail.com/0`, headers)
         .then(async response => {
           const data = await response.json();
-          this.formData = {
-            cnpj: data.cnpj.cnpj,
-            cnae: data.idCnae.codigo,
-            desc: data.idCnae.descricao,
-            name: data.cnpj.nome,
-            city: data.idCidade.nome,
-            state: data.idCidade.estado,
-            clientLevel: data.nivel,
+          for (let element of data) {
+            const client = {
+              cnpj: element.cnpj.cnpj,
+              cnae: element.idCnae.codigo,
+              fantasia: element.cnpj.nome,
+              uf: element.idCidade.estado,
+              contato: element.cnpj.telefone,
+              email: element.cnpj.email
+            };
+            this.dataGrid.push(client);
           }
-          if (data.vendedor == null) {
-            this.formData.vendorID = '';
-          }
-          else {
-            this.formData.vendorID = data.vendedor.email;
-          }
-          this.infoMessage = '';
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-  
         })
-        .catch(error => {
-          this.infoMessage = '';
-          this.messages.push('Algo deu errado, tente novamente. Caso o erro persista contate o admin');
-          console.log(error);
-        });
     },
     onSave() {
       this.sucessMessage = '';
@@ -265,6 +180,11 @@ export default {
     deleteWallet() {
       this.formData.vendorID = null;
     }
+  },
+  beforeMount() {
+    this.searchUser();
+    this.gridData = JSON.parse(JSON.stringify(this.dataGrid))
+    console.log(this.dataGrid.freeze());
   },
   provide: {
     grid: [Page, Resize, Filter, Sort, Toolbar, ExcelExport]

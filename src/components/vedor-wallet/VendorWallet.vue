@@ -25,13 +25,12 @@
     :pageSettings='pageSettings'
     :rowSelected='rowSelected'>
       <e-columns>
-      <e-column class='column' field='OrderID' headerText='CNPJ' textAlign='Right'  width=100></e-column>
-      <e-column field='CustomerID' headerText='CNAE' width=120 textAlign='Right'></e-column>
-      <e-column field='ShipCountry' headerText='Nome Fantasia' width='100' textAlign='Right'></e-column>
-      <e-column field='ShipCountry' headerText='Proprietário' width=100 textAlign='Right'></e-column>
-      <e-column field='ShipCountry' headerText='UF' width=100 textAlign='Right'></e-column>
-      <e-column field='ShipCountry' headerText='Contato' width=100 textAlign='Right'></e-column>
-      <e-column field='ShipCountry' headerText='Email' width=100 textAlign='Right'></e-column>
+      <e-column class='column' field='cnpj' headerText='CNPJ' textAlign='Right'  width=100></e-column>
+      <e-column field='CustomerID' headerText='cnae' width=120 textAlign='Right'></e-column>
+      <e-column field='ShipCountry' headerText='fantasia' width='100' textAlign='Right'></e-column>
+      <e-column field='ShipCountry' headerText='uf' width=100 textAlign='Right'></e-column>
+      <e-column field='ShipCountry' headerText='contato' width=100 textAlign='Right'></e-column>
+      <e-column field='ShipCountry' headerText='email' width=100 textAlign='Right'></e-column>
       </e-columns>
     </ejs-grid>
   </div>
