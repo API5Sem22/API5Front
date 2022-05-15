@@ -39,12 +39,12 @@
           v-model="formData.name" 
           disabled
           >
-          Nome do Proprietário
+          Nome Fantasia
           </ui-textfield>
         </ui-form-field>
         <ui-form-field class="form-item">
           <ui-textfield
-          v-model="formData.city"
+          v-model="formData.size"
           disabled
           class="uiInput"
           >
@@ -53,7 +53,7 @@
         </ui-form-field>
         <ui-form-field class="form-item">
           <ui-textfield
-          v-model="formData.state"
+          v-model="formData.openDate"
           disabled
           >
           Data de Abertura
@@ -63,17 +63,8 @@
       <div class="item">
         <ui-form-field class="form-item">
           <ui-textfield
-          v-model="formData.name" 
-          disabled
-          >
-          Nome Fantasia
-          </ui-textfield>
-        </ui-form-field>
-        <ui-form-field class="form-item">
-          <ui-textfield
           v-model="formData.city"
           disabled
-          class="uiInput"
           >
           Cidade
           </ui-textfield>
@@ -81,28 +72,29 @@
         <ui-form-field class="form-item">
           <ui-textfield
           v-model="formData.state"
+          class="uiInput"
           disabled
           >
           Estado
           </ui-textfield>
         </ui-form-field>
-      </div>
-      <div class="item">
         <ui-form-field class="form-item">
           <ui-textfield
-          v-model="formData.state"
+          v-model="formData.nature"
           disabled
           >
           Natureza Jurídica
           </ui-textfield>
         </ui-form-field>
+      </div>
+      <div class="item">
         <ui-form-field class="form-item">
-          <ui-textfield class="uiInput" v-model="formData.vendorID">
-            Contato
+          <ui-textfield v-model="formData.phone">
+            Telefone
           </ui-textfield>
         </ui-form-field>
         <ui-form-field class="form-item">
-          <ui-textfield class="uiInput" v-model="formData.vendorID">
+          <ui-textfield class="uiInput" v-model="formData.email">
             Email
           </ui-textfield>
         </ui-form-field>
@@ -118,7 +110,7 @@
       </div>
       <div class="buttonSave">
         <ui-form-field>
-          <ui-button class="backButton" @click="confirmDialog()" raised>Voltar</ui-button>
+          <ui-button class="backButton" @click="getBack()" raised>Voltar</ui-button>
         </ui-form-field>
         <ui-form-field>
           <ui-button class="saveButton" @click="confirmDialog()" raised>Salvar</ui-button>

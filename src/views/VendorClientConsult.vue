@@ -10,5 +10,4 @@
     FormVendorClient
   }
 }
-console.log('chegou');
 </script>

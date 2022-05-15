@@ -15,10 +15,19 @@
         <b>Consultar Usuário</b>
       </div>
     </div>
-    <div class="menu-option" @click="navigateTo('clientConsult')">
-      <b class="option"><span class="material-icons-outlined option">
+    <div class="menu-option">
+      <b @click="openClientMenu()" class="option"><span class="material-icons-outlined option">
         headset_mic
       </span>  Área de Clientes</b>
+      <div v-if="openClient" class="options" @click="navigateTo('clientConsult')">
+        <b>Editar Cliente</b>
+      </div>
+      <div v-if="openClient" class="options" @click="navigateTo('vendorFreeWallets')">
+        <b>Clientes Livres</b>
+      </div>
+      <div v-if="openClient" class="options" @click="navigateTo('vendorWallet')">
+        <b>Minha Carteira</b>
+      </div>
     </div>
   </div>
   </div>

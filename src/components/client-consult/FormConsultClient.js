@@ -27,8 +27,12 @@ const clientLevelOptions = [
   },
   {
     label: 'Nível 3',
-    value: 'C3'
+    value: 'C3',
   },
+  {
+    label: 'Nível 4',
+    value: 'C4',
+  }
 ];
 export default {
   data() {
@@ -165,6 +169,14 @@ export default {
     },
     deleteWallet() {
       this.formData.vendorID = null;
+    }
+  },
+  mounted() {
+    let cnpj = this.$route.params;
+    this.clientID = Object.values(cnpj).join('');
+    console.log(this.clientID);
+    if (this.clientID) {
+      this.searchUser();
     }
   }
 };

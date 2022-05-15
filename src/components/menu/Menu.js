@@ -4,6 +4,7 @@ export default {
     data() {
       return {
         openUser: false,
+        openClient: false,
       };
     },
     methods: {
@@ -13,6 +14,14 @@ export default {
         }
         else {
           this.openUser = true;
+        }
+      },
+      openClientMenu() {
+        if (this.openClient === true) {
+          this.openClient = false;
+        }
+        else {
+          this.openClient = true;
         }
       },
       navigateTo(value) {

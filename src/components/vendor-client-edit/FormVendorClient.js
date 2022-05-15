@@ -1,51 +1,31 @@
+import router from '@/router';
 import { useValidator } from 'balm-ui';
 
 const validations = {
-    cnpj: {
-      label: 'CNPJ',
-      validator: 'notNull',
-      notNull: {
-        validate (value) {
-          return value !== '00.000.000/0000-00'
-        },
-        message: 'Nenhum cliente selecionado!' 
-      }
-    },
-    clientLevel: {
-      label: 'Nivel de carteira',
-      validator: 'required',
-    },
+  phone: {
+    label: 'Telefone',
+    validator: 'required',
+  },
 }
-const clientLevelOptions = [
-  {
-    label: 'Nível 1',
-    value: 'C1'
-  },
-  {
-    label: 'Nível 2',
-    value: 'C2',
-  },
-  {
-    label: 'Nível 3',
-    value: 'C3'
-  },
-];
+
 export default {
   data() {
     return {
       balmUI: useValidator(),
-      validations,
-      clientLevelOptions,
       clientID: '',
+      validations,
       formData: {
         cnpj: '00.000.000/0000-00',
         cnae: '00000/00',
         desc: 'Descrição CNAE',
         name: 'Nome da Empresa',
+        size: 'Porte da Empresa',
+        openDate: 'Data de Abertura',
         city: 'Cidade da Empresa',
         state: 'UF',
-        clientLevel: '',
-        vendorID: 'ID do Vendedor',
+        nature: 'Natureza Jurídica',
+        phone: 'Telefone',
+        email: 'Email',
       },
       messages: [],
       infoMessage: '',
@@ -53,41 +33,28 @@ export default {
     };
   },
   methods: {
-    formReset() {
-      this.formData = {
-        cnpj: '00.000.000/0000-00',
-        cnae: '00000/00',
-        desc: 'Descrição CNAE',
-        name: 'Nome da Empresa',
-        city: 'Cidade da Empresa',
-        state: 'UF',
-        clientLevel: '',
-        vendorID: 'ID do Vendedor',
-      }
-    },
-    searchUser() {
+    searchUser(value) {
       this.messages = [];
       this.sucessMessage = '',
       this.infoMessage = 'Processando sua requisição'
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
-      fetch(`https:datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
+      fetch(`https://datawarriors-back.herokuapp.com/empresas/org/${value}`, headers)
         .then(async response => {
           const data = await response.json();
+          console.log(data);
           this.formData = {
             cnpj: data.cnpj.cnpj,
             cnae: data.idCnae.codigo,
             desc: data.idCnae.descricao,
             name: data.cnpj.nome,
+            size: data.cnpj.porte,
+            openDate: data.cnpj.dataAbertura,
             city: data.idCidade.nome,
             state: data.idCidade.estado,
-            clientLevel: data.nivel,
-          }
-          if (data.vendedor == null) {
-            this.formData.vendorID = '';
-          }
-          else {
-            this.formData.vendorID = data.vendedor.email;
+            nature: data.cnpj.naturezaJuridica,
+            phone: data.cnpj.telefone,
+            email: data.cnpj.email,
           }
           this.infoMessage = '';
           // check for error response
@@ -108,11 +75,11 @@ export default {
       this.sucessMessage = '';
       let requestOptions = {};
       this.infoMessage = 'Processando sua requisição';
-      if(this.formData.vendorID === '' || this.formData.vendorID === null) {
+      if(this.formData.email === '' || this.formData.email === null) {
         requestOptions = {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: this.formData.vendorID, nivel: this.formData.clientLevel}),
+          body: JSON.stringify({cnpj: this.formData.cnpj, telefone: this.formData.phone, email: null}),
         };
       }
       else {
@@ -120,10 +87,10 @@ export default {
         requestOptions = {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({cnpj: {cnpj: this.formData.cnpj}, vendedor: {email: this.formData.vendorID }, nivel: this.formData.clientLevel}),
+          body: JSON.stringify({cnpj: this.formData.cnpj, telefone: this.formData.phone, email: this.formData.email}),
         };
       }
-      fetch(`https://datawarriors-back.herokuapp.com/empresas/upt`, requestOptions)
+      fetch(`https://datawarriors-back.herokuapp.com/empresa-descricao/atualiza-descricao-empresa`, requestOptions)
       .then(async response => {
       const data = await response;
       // check for error response
@@ -145,10 +112,13 @@ export default {
       });
       /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       continuar em aula https://next-material.balmjs.com/#/data-input/validator*/
-    this.formReset();
+      let cnpj = this.$route.params
+      this.searchUser(Object.values(cnpj).join(''));
     },
     confirmDialog() {
       const result = this.balmUI.validate(this.formData);
+      console.log(this.formData);
+      console.log(this.result);
       const { valid, messages} = result;
       this.messages = messages;
       if (valid) {
@@ -163,8 +133,12 @@ export default {
         });
       }
     },
-    deleteWallet() {
-      this.formData.vendorID = null;
+    getBack() {
+      router.push('/vendorWallet');
     }
-  }
+  },
+  mounted() {
+    let cnpj = this.$route.params
+    this.searchUser(Object.values(cnpj).join(''));
+  },
 };

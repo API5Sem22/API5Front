@@ -33,7 +33,7 @@ const routes = [
   },
   {
     path: '/clientConsult',
-    name: 'Consulta de Clientes',
+    name: 'clientConsult',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -41,7 +41,7 @@ const routes = [
   },
   {
     path: '/vendorWalletClient',
-    name: 'Minha Carteira Client',
+    name: 'ClientData',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -54,6 +54,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/VendorWallet.vue')
+  },
+  {
+    path: '/vendorFreeWallets',
+    name: 'FreeClients',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/FreeVendors.vue')
   }
 ]
 

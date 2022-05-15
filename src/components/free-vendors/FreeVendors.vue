@@ -35,7 +35,7 @@
     </ejs-grid>
   </div>
 </template>
-<script src="./VendorWallet.js"></script>
+<script src="./FreeVendors.js"></script>
 <style lang="scss" scoped>
-  @import "./VendorWallet.scss";
+  @import "./FreeVendors.scss";
 </style>

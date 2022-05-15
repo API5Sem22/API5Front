@@ -22,7 +22,7 @@ export default {
   methods: {
     rowSelected: function() {
       let selectedrecords = this.$refs.grid.getSelectedRecords();  // Get the selected records.
-      this.$router.push({name: 'ClientData', params: selectedrecords[0].cnpj})
+      this.$router.push({name: 'clientConsult', params: selectedrecords[0].cnpj})
     },
     toolbarClick: function(args) {
       if (args.item.id === 'Grid_excelexport') { // 'Grid_excelexport' -> Grid component id + _ + toolbar item name
@@ -31,9 +31,9 @@ export default {
     },
     searchUser(value) {
       this.gridData = [];
-      let url = `https://datawarriors-back.herokuapp.com/empresas/carteira/gabriel@gmail.com/${value}`
+      let url = `https://datawarriors-back.herokuapp.com/empresas/livres/${value}?page=0`
       if (this.clientCnae === null || this.clientCnae === '') {
-        url = `https://datawarriors-back.herokuapp.com/empresas/carteira/gabriel@gmail.com/0`
+        url = `https://datawarriors-back.herokuapp.com/empresas/livres/0?page=0`
       }
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
