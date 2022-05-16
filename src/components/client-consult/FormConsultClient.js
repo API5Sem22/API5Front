@@ -75,7 +75,7 @@ export default {
       this.infoMessage = 'Processando sua requisição'
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
-      fetch(`https:datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
+      fetch(`https://datawarriors-back.herokuapp.com/empresas/org/${this.clientID}`, headers)
         .then(async response => {
           const data = await response.json();
           this.formData = {
