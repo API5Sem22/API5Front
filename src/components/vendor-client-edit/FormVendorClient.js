@@ -112,8 +112,6 @@ export default {
       });
       /*Material de consulta: https://jasonwatmore.com/post/2020/04/30/vue-fetch-http-post-request-examples
       continuar em aula https://next-material.balmjs.com/#/data-input/validator*/
-      let cnpj = this.$route.params
-      this.searchUser(Object.values(cnpj).join(''));
     },
     confirmDialog() {
       const result = this.balmUI.validate(this.formData);
