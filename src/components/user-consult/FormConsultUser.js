@@ -37,6 +37,10 @@ const userLevelOptions = [
     label: 'Nível 3',
     value: 3
   },
+  {
+    label: 'Nível 4',
+    value: 4
+  },
 ];
 export default {
   data() {
