@@ -4,16 +4,16 @@ orbs:
   node: circleci/node@4.7
   
 jobs:
-  build:
+  build-test:
     docker:
       - image: cimg/node:17.2.0
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: npm
-      #- run:
-       #   command: npm run test
-        #  name: Run tests
+      - run:
+         command: npm run test
+         name: Run tests
       - run:
           command: npm run build
           name: Build app
@@ -35,9 +35,9 @@ jobs:
             HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a datawarriorsweb web
 
 workflows:
-  build:
+  build-test:
     jobs:
-      - build:
+      - build-test:
           filters:
                   branches:
                     ignore: main
