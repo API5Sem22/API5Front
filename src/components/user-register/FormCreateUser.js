@@ -93,7 +93,6 @@ const userFunctionOptions = [
         }
       },
       onSave() {
-        console.log(this.formData);
         this.sucessMessage = '';
         const result = this.balmUI.validate(this.formData);
         const { valid, messages} = result;

@@ -1,8 +1,9 @@
 <template>
 <div class="container">
-    <MenuLateral />
+    <MenuLateral v-if="isLoged"/>
   <div>
-    <router-view/>
+    <LoginComponent v-if="!isLoged"/>
+    <router-view v-if="isLoged" />
   </div>
 </div>
 </template>
@@ -10,12 +11,30 @@
 <script>
 // @ is an alias to /src
 import MenuLateral from '@/components/menu/MenuLateral.vue'
+import LoginComponent from '@/components/login/LoginComponent.vue'
+
+import store from './store';
 
 export default {
   name: 'HomeView',
   components: {
-    MenuLateral
-  }
+    MenuLateral,
+    LoginComponent
+  },
+  data () {
+
+  },
+  methods: {
+
+  },
+  computed: {
+    isLoged() {
+      return store.state.usuario
+    },
+    currentRouteName() {
+        return this.$route.name;
+    }
+}
 }
 </script>
 <style lang="scss">

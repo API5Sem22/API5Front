@@ -174,7 +174,6 @@ export default {
   mounted() {
     let cnpj = this.$route.params;
     this.clientID = Object.values(cnpj).join('');
-    console.log(this.clientID);
     if (this.clientID) {
       this.searchUser();
     }

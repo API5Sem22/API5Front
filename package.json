@@ -18,7 +18,7 @@
     "vue": "^3.2.33",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
