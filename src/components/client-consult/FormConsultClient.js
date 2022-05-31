@@ -1,4 +1,5 @@
 import { useValidator } from 'balm-ui';
+import store from '@/store';
 
 const validations = {
     cnpj: {
@@ -88,7 +89,7 @@ export default {
             clientLevel: data.nivel,
           }
           if (data.vendedor == null) {
-            this.formData.vendorID = '';
+            this.formData.vendorID = store.state.usuario;
           }
           else {
             this.formData.vendorID = data.vendedor.email;

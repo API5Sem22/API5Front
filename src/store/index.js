@@ -2,6 +2,8 @@ import { createStore } from 'vuex'
 
 const store = createStore ({
   state: {
+    usuario: null,
+    departament: null
   },
   getters: {
   },

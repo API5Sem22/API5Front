@@ -43,10 +43,9 @@ export default {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(this.formData)
 				};
-				console.log(requestOptions);
-				fetch(`https://datawarriors-back.herokuapp.com/usuarios/login`, requestOptions)
+				fetch(`http://localhost:8082/usuarios/login`, requestOptions)
 				.then(async response => {
-				const data = await response;
+				const data = await response.json();
 				// check for error response
 				if (!response.ok) {
 					// get error message from body or default to response status
@@ -54,7 +53,9 @@ export default {
 					return Promise.reject(error);
 				}
 				else {
+					console.log(data);
 					store.state.usuario = data.email;
+					store.state.departament = data.departamento;
           this.$router.push('/')
 				}
 				this.postId = data.id;

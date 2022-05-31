@@ -36,7 +36,7 @@
 			</ui-alert>
 		</div>
 		<ui-form-field>
-      <ui-button class="saveButton" @click="login2()" raised>Entrar</ui-button>
+      <ui-button class="saveButton" @click="login()" raised>Entrar</ui-button>
     </ui-form-field>
 		</div>
 	</div>
