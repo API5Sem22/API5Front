@@ -31,33 +31,33 @@ const validations = {
 const userFunctionOptions = [
     {
       label: 'Vendedor',
-      value: 1
+      value: 14
     },
     {
       label: 'Admin',
-      value: 2,
+      value: 15,
     },
     {
       label: 'Analista de negócios',
-      value: 3
+      value: 16
     },
   ];
   const userLevelOptions = [
     {
-      label: 'Nível 1',
-      value: 1
+      label: 'Júnior',
+      value: 18
     },
     {
-      label: 'Nível 2',
-      value: 1,
+      label: 'Pleno',
+      value: 19,
     },
     {
-      label: 'Nível 3',
-      value: 3
+      label: 'Sênior',
+      value: 20
     },
     {
-      label: 'Nível 4',
-      value: 4
+      label: 'Especialista',
+      value: 21
     }
   ];
   export default {
@@ -93,7 +93,6 @@ const userFunctionOptions = [
         }
       },
       onSave() {
-        console.log(this.formData);
         this.sucessMessage = '';
         const result = this.balmUI.validate(this.formData);
         const { valid, messages} = result;
