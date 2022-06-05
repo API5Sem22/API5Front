@@ -25,6 +25,9 @@
       <div v-if="openClient" class="options" @click="navigateTo('vendorFreeWallets')">
         <b>Clientes Livres</b>
       </div>
+      <div v-if="openClient" class="options" @click="navigateTo('topClients')">
+        <b>Top Clientes</b>
+      </div>
       <div v-if="openClient" class="options" @click="navigateTo('vendorWallet')">
         <b>Minha Carteira</b>
       </div>
