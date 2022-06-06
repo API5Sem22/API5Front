@@ -1,11 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import userRegister from '../views/UserRegister.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Registro de Usuário',
-    component: userRegister
+    name: 'Minha Carteira',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/VendorWallet.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
   },
   {
     path: '/about',
@@ -62,6 +72,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/FreeVendors.vue')
+  },
+  {
+    path: '/topClients',
+    name: 'topClients',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/TopClientChart.vue')
   }
 ]
 
