@@ -43,7 +43,7 @@ export default {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(this.formData)
 				};
-				fetch(`http://localhost:8082/usuarios/login`, requestOptions)
+				fetch(`https://datawarriors-back.herokuapp.com/usuarios/login`, requestOptions)
 				.then(async response => {
 				const data = await response.json();
 				// check for error response
