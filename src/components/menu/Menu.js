@@ -1,5 +1,5 @@
 import router from "@/router";
-
+import store from "@/store";
 export default {
     data() {
       return {
@@ -26,6 +26,17 @@ export default {
       },
       navigateTo(value) {
         router.push(`/${value}`);
+      },
+      isAdmin() {
+        return store.state.departament === 'Admin';
+      },
+      logout() {
+        store.state.departament = null;
+        store.state.usuario = null;
+        router.push('/');
       }
+    },
+    mounted() {
+      this.isAdmin();
     }
 }

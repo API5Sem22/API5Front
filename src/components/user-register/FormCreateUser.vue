@@ -20,6 +20,7 @@
     <ui-form-field class="form-item">
       <ui-textfield
       v-model="formData.departamento"
+      id="departamento"
       helper-text-id="my-text-field-helper-text"
       >
       Departamento
@@ -29,6 +30,7 @@
       <ui-textfield
       v-model="formData.nome"
       class="uiInput"
+      id="nome"
       helper-text-id="my-text-field-helper-text"
       >
       Nome
@@ -41,6 +43,7 @@
       <ui-textfield
       v-model="formData.email"
       class="uiInput"
+      id="email"
       helper-text-id="my-text-field-helper-text"
       >
       Email
@@ -50,6 +53,7 @@
       <ui-textfield
       input-type="password"
       v-model="formData.senha"
+      id="senha"
       helper-text-id="my-text-field-helper-text"
       >
       Senha 
@@ -59,6 +63,7 @@
       <ui-textfield
       input-type="password"
       class="uiInput"
+      id="resenha"
       v-model="formData.rePassword"
       helper-text-id="my-text-field-helper-text"
       >
@@ -81,7 +86,7 @@
     </ui-form-field>
   </div>
   <div class="item error">
-  <ui-alert v-if="messages.length" state="error">
+  <ui-alert v-if="messages.length" state="error" id="erro">
     <ul>
       <li v-for="(message, index) in messages" :key="index">{{ message }}</li>
     </ul>

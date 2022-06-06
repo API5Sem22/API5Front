@@ -2,7 +2,7 @@
   <div class="userConsult">
     <div class="item">
       <h2 class="title">Consultar Usuários</h2>
-      <ui-textfield v-model="userEmail" >
+      <ui-textfield v-model="userEmail" v-on:keyup.enter="searchUser()" id="pesquisa" >
         Buscar Email do Usuário
         <template #after>
           <ui-textfield-icon @click="searchUser()">search</ui-textfield-icon>

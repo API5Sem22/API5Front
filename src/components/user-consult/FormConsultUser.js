@@ -26,16 +26,20 @@ const validations = {
 }
 const userLevelOptions = [
   {
-    label: 'Nível 1',
-    value: 1
+    label: 'Júnior',
+    value: 18
   },
   {
-    label: 'Nível 2',
-    value: 2,
+    label: 'Pleno',
+    value: 19,
   },
   {
-    label: 'Nível 3',
-    value: 3
+    label: 'Sênior',
+    value: 20
+  },
+  {
+    label: 'Especialista',
+    value: 21
   },
 ];
 export default {

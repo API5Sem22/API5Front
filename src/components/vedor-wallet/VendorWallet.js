@@ -1,6 +1,7 @@
 import { useValidator } from 'balm-ui';
 import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-vue-grids';
 import { Page, Resize, Filter, Sort, Toolbar, ExcelExport } from "@syncfusion/ej2-vue-grids";
+import store from '@/store';
 
 export default {
     name: "App",
@@ -31,9 +32,9 @@ export default {
     },
     searchUser(value) {
       this.gridData = [];
-      let url = `https://datawarriors-back.herokuapp.com/empresas/carteira/gabriel@gmail.com/${value}`
+      let url = `https://datawarriors-back.herokuapp.com/empresas/carteira/${store.state.usuario}/${value}`
       if (this.clientCnae === null || this.clientCnae === '') {
-        url = `https://datawarriors-back.herokuapp.com/empresas/carteira/gabriel@gmail.com/0`
+        url = `https://datawarriors-back.herokuapp.com/empresas/carteira/${store.state.usuario}/0`
       }
       const headers ={ 'Content-Type': 'application/json' };
       // GET request using fetch with error handling
