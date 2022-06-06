@@ -28,7 +28,6 @@ export default {
         router.push(`/${value}`);
       },
       isAdmin() {
-        console.log(store.state.departament);
         return store.state.departament === 'Admin';
       },
       logout() {
