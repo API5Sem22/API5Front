@@ -12,17 +12,17 @@ const factory = (values = {}) => {
 }
 describe('FormCreateUser', () => {
   it('Exibe o combobox de nivel de carteira para Vendedor', () => {
-    const wrapper = factory({formData: {cargo: {idCargo: 1}, carteira: {idCarteira: 1}}})
+    const wrapper = factory({formData: {cargo: {idCargo: 14}, carteira: {idCarteira: 18}}})
 
     expect(wrapper.find('#userLevel').exists()).toBeTruthy()
   })
   it('Não exibe o combobox de nivel de carteira para Admin', () => {
-    const wrapper = factory({formData: {cargo: {idCargo: 2}, carteira: {idCarteira: 1}}})
+    const wrapper = factory({formData: {cargo: {idCargo: 15}, carteira: {idCarteira: 18}}})
 
     expect(wrapper.find('#userLevel').exists()).toBeFalsy()
   })
   it('Não exibe o combobox de nivel de carteira para Analista de Negocios', () => {
-    const wrapper = factory({formData: {cargo: {idCargo: 3}, carteira: {idCarteira: 1}}})
+    const wrapper = factory({formData: {cargo: {idCargo: 16}, carteira: {idCarteira: 18}}})
 
     expect(wrapper.find('#userLevel').exists()).toBeFalsy()
   })
