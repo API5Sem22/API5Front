@@ -98,7 +98,7 @@ const userFunctionOptions = [
         const { valid, messages} = result;
         this.messages = messages;
         if (valid) {
-          if (this.formData.cargo.idCargo !== 1) {
+          if (this.formData.cargo.idCargo !== 14) {
             this.formData.carteira = null;
           }
           // POST request using fetch with error handling
