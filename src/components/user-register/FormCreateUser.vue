@@ -76,7 +76,7 @@
       <ui-select
       class="selectBox"
       id="userLevel"
-      v-if="formData.cargo.idCargo === 1"
+      v-if="formData.cargo.idCargo === 14"
       v-model="formData.carteira.idCarteira"
       :options="userLevelOptions"
       default-label="Nivel de carteira"
